@@ -23,17 +23,18 @@ judges mutations rather than generating text.
 
 Measured on the frozen human gold-300 set and PADT dev at this commit:
 
-| Gate | Metric | Value |
-|---|---|---|
-| G1a | Oracle compiler — consonant skeleton (`resource=OFF`) | **97.49%** (272/279) |
-| G1b | Oracle compiler — vocalized token-exact | **60.4%** (169/280) |
-| G4 | Case macro-F1 | **0.804** PADT dev / **0.602** gold-300 |
-| G7 | Counterfactual Naḥw verifier | **100/100** minimal pairs |
-| G8 | Diacritic-sensitive role binding | **100%** |
+| Gate | Metric | Value | Bar | Status |
+|---|---|---|---|---|
+| G1a | Oracle compiler — consonant skeleton (`resource=OFF`) | 97.49% (272/279) | ≥98.0% | **FAIL** — open |
+| G1b | Oracle compiler — vocalized token-exact | 60.4% (169/280) | ≥70.0% | **FAIL** — open |
+| G4 | Case macro-F1 | 0.804 PADT dev / 0.602 gold-300 | research metric, no production bar | — |
+| G7 | Counterfactual Naḥw verifier | 100/100 minimal pairs | 100/100 | PASS |
+| G8 | Diacritic-sensitive role binding | 100% | 100% | PASS |
 
-Those numbers are the honest peak and the honest ceiling: G1a and G1b are the two the project never
-closed, which is precisely why the direction changed. Full evidence and the correction history live in
-`EVIDENCE_LOG.md`, `ENGINE_PRODUCTION_PLAN.md` §3, and `results/results.json`.
+Those numbers are the honest peak and the honest ceiling: **G1a and G1b are the two the project never
+met** — each misses its bar, not merely the round number — which is precisely why the direction
+changed. Full evidence and the correction history live in `EVIDENCE_LOG.md`,
+`ENGINE_PRODUCTION_PLAN.md` §3, and `results/results.json`.
 
 ## Why this snapshot exists
 
