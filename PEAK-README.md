@@ -52,6 +52,22 @@ docs/           specifications, reviews, annotation protocol
 results/        results.json — per-seed metrics, ceilings, parity
 ```
 
+## Known defects found while preparing this snapshot
+
+Recorded, not fixed — this is a frozen state, and a research artefact that hides its defects is
+worth less than one that names them. Both were reproduced with `python demo.py`, which needs no corpus.
+
+1. **Semantic binder: Indonesian translation does not follow the role flip.** For
+   `ضَرَبَ زَيْدًا عَمْرٌ` the roles are correctly bound (`AGENT = عَمْرٌ`, `PATIENT = زَيْدًا`) and the
+   English is correct ("It was Zayd whom 'Amr struck"), but the Indonesian string still reads
+   *"Zaid-lah yang memukul 'Amr"* — i.e. still asserts Zaid as the striker. The English path
+   re-renders from the bound roles; the Indonesian path does not. Any app showing both languages
+   would teach the wrong reading on exactly the sentence the binder exists to disambiguate.
+2. **Renderer: hollow-root surface gap.** `مُحْتَاج` (root ح.و.ج, pattern مُ1ْتَ2َ3) traces to
+   `مُحْتَوَج` and stops there; the weak-radical elision that should give `مُحْتَاج` never fires on
+   this path. The trace is honest about each step, which is how the gap was found — but the surface
+   is wrong.
+
 ## Licence status
 
 Code in this snapshot is first-party. It depends on two external works, **neither included here**:
