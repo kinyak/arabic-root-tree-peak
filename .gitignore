@@ -1,0 +1,49 @@
+# --- environment ------------------------------------------------------------------
+.venv/
+__pycache__/
+*.pyc
+
+# --- corpora: DELIBERATELY NOT TRACKED --------------------------------------------
+# QAC (GPLv3), PADT/NYUAD (CC BY-NC-SA), Tashkeela (GPL-2.0) and CAMeL data (GPL v2)
+# are copyleft / non-commercial. Committing them into git would REDISTRIBUTE them.
+# Re-fetch with the recipe in data/raw/MANIFEST.md and verify against:
+#     cd data/raw && sha256sum -c CHECKSUMS.sha256
+data/raw/*
+!data/raw/MANIFEST.md
+!data/raw/CHECKSUMS.sha256
+
+# --- derived data -----------------------------------------------------------------
+# data/out/ must stay in the tree (it is the missing training input, G1) but its
+# contents are large generated artifacts.
+data/out/*
+!data/out/.gitkeep
+
+# --- scratch ----------------------------------------------------------------------
+*.log
+*.tmp
+# ad-hoc wheels / intermediates fetched by hand (e.g. when a package index is
+# throttled and the wheel has to be downloaded directly). Never part of the repo.
+*.whl
+wheel_url.txt
+data/annotation/private/
+data/annotation/*.tar.gz
+# annotation KEYs: id -> stratum/lemma/split. Not gold, but knowing a row is "homographic"
+# would bias the annotator, so a KEY must never be tracked or shipped with the sheet.
+data/annotation/*-KEY.csv
+dist/
+
+# staged Kaggle payload (dataset copies + kernel bundle) — reproducible, never tracked
+build/
+
+# Corpus-derived resources (copyleft source: never commit, never publish)
+data/resources/
+
+# --- snapshot guard: never publish corpora or weights from the private repo ---
+bundle/
+checkpoints/
+data/out/
+data/raw/
+data/annotation/
+data/resources/
+build/
+dist/

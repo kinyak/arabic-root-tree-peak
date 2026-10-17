@@ -1,0 +1,81 @@
+{
+  "note": "leak-free decoder; both resource modes; safe checkpoint load",
+  "results": [
+    {
+      "checkpoint": "silver-treatment-s20261011.pt",
+      "arm": "treatment",
+      "source": "silver",
+      "seed": 20261011,
+      "n_missing_tensors": 19,
+      "disabled_modules": [
+        "char_encoder"
+      ],
+      "untrained_heads": [
+        "wazan_canonical"
+      ],
+      "elapsed_sec": 44.2,
+      "modes": {
+        "resource_off": {
+          "wazan_raw": 0.0827,
+          "wazan_hamza_norm": 0.0827,
+          "wazan_canonical": null,
+          "wazan_slots": 0.9856,
+          "root": 0.1079,
+          "case_macro_f1": 0.3505226934320653,
+          "surface_v3_stem": 0.0,
+          "surface_v3_rasm_stem": 0.0,
+          "surface_v3_rasm_token": 0.0
+        },
+        "resource_on": {
+          "wazan_raw": 0.0827,
+          "wazan_hamza_norm": 0.0827,
+          "wazan_canonical": null,
+          "wazan_slots": 0.9856,
+          "root": 0.1079,
+          "case_macro_f1": 0.3505226934320653,
+          "surface_v3_stem": 0.6433333333333333,
+          "surface_v3_rasm_stem": 0.6833333333333333,
+          "surface_v3_rasm_token": 0.6833333333333333
+        }
+      }
+    },
+    {
+      "checkpoint": "gold-treatment-s20261010.pt",
+      "arm": "treatment",
+      "source": "gold",
+      "seed": 20261010,
+      "n_missing_tensors": 19,
+      "disabled_modules": [
+        "char_encoder"
+      ],
+      "untrained_heads": [
+        "wazan_canonical"
+      ],
+      "elapsed_sec": 46.21,
+      "modes": {
+        "resource_off": {
+          "wazan_raw": 0.0396,
+          "wazan_hamza_norm": 0.0432,
+          "wazan_canonical": null,
+          "wazan_slots": 0.9892,
+          "root": 0.0,
+          "case_macro_f1": 0.403247761525558,
+          "surface_v3_stem": 0.0,
+          "surface_v3_rasm_stem": 0.0,
+          "surface_v3_rasm_token": 0.0
+        },
+        "resource_on": {
+          "wazan_raw": 0.0396,
+          "wazan_hamza_norm": 0.0432,
+          "wazan_canonical": null,
+          "wazan_slots": 0.9892,
+          "root": 0.0,
+          "case_macro_f1": 0.403247761525558,
+          "surface_v3_stem": 0.61,
+          "surface_v3_rasm_stem": 0.6833333333333333,
+          "surface_v3_rasm_token": 0.6833333333333333
+        }
+      }
+    }
+  ]
+}

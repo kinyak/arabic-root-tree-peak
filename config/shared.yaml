@@ -1,0 +1,259 @@
+# ============================================================================
+# THE SHARED CONFIG — read by BOTH arms (SPEC-REV6 §5.2).
+#
+# "One shared config file both arms read — size, steps, seeds, splits (the
+#  matched-size claim is only credible if it is literally the same file)."
+#                          — START-HERE.md §10
+#
+# So: neither arm gets its own config, and neither arm's code may hardcode a
+# hyperparameter. If a number differs between arms, it is a BUG, not a tuning
+# choice. `src/model_arms.py --parity` computes both arms' parameter counts from
+# THIS file and fails if they disagree by more than `parity.tolerance`.
+#
+# A13 / §5.2 SUPERVISORY PARITY is also encoded here: the two arms share the SAME
+# five heads at the SAME weights. The ONLY architectural difference is the
+# decoder — the treatment generates through the grammatical representation, the
+# baseline generates surface and predicts the labels as auxiliaries. Without
+# this the headline result is uninterpretable, because the treatment would be
+# getting five answer keys where the baseline gets one.
+# ============================================================================
+
+seed: 20261009
+seeds: [20261009, 20261010, 20261011]      # 3 seeds per arm (COLAB.md §4.2)
+
+paths:
+  train: data/out/padt-train.jsonl
+  dev: data/out/padt-dev.jsonl
+  test: data/out/padt-test.jsonl
+  vocab: data/out/vocab.json
+  # SILVER (Tashkeela) — produced by `build_training_jsonl.py --source tashkeela`.
+  # Books 0-7 are the dev split precisely because the human gold was sampled from
+  # them, so the gold can never sit inside the silver TRAIN split.
+  #
+  # *** ROUND 26: THE SPREAD SAMPLE (CHALLENGES 2ae/2af). *** These point at the spread
+  # build, NOT the old one-book build. The old sample was the OPENING OF BOOK 8 and covered
+  # 0 of the 126 OOV gold words; this one is spread across all 82 train books (dev: all 8,
+  # test: all 7), sampler mode=spread seed=0, budget 2,000,000 train / 200,000 eval.
+  # Manifest (tracked in git): data/out/spread-B-2m/build_manifest_tashkeela.json
+  #   approved output sha256: train 6dfeace847ed24d8… dev 8bf74ed10bc02da2… test b8dd1df81642681a…
+  #
+  # EXPERIMENTAL INVARIANTS — do NOT co-change these with the sample, or the run stops being
+  # attributable to data scale alone (docs/next-run-criteria.md):
+  #   data.min_freq = 2 · data.max_vocab = 20000 · conditioning ON · 3 seeds · decoder pair.
+  # max_vocab now BINDS at 19,998 (it never did before); raising it is the NEXT experiment.
+  silver_train: data/out/spread-B-2m/tashkeela-train.jsonl
+  silver_dev: data/out/spread-B-2m/tashkeela-dev.jsonl
+  human_gold: data/annotation/gold-tashkeela-300.jsonl
+  # HELD OUT, never trained on (SPEC-REV6 §3.1). Listed so the loader can refuse
+  # them explicitly rather than by omission.
+  eval_only: [data/raw/ar_nyuad-ud-test.conllu, data/raw/qrtb/Quranic.csv,
+              data/raw/qac-morphology-0.4.txt]
+
+ablation:
+  # ==========================================================================
+  # THE SILVER-vs-GOLD TRAINING-TARGET ABLATION.
+  #
+  # WHY IT EXISTS: round 16 flagged its own ceiling comparison as INVALID — the arms
+  # trained on PADT treebank gold, while the 0.459/0.451 ceilings measure
+  # CALIMA-vs-human agreement. Beating a ceiling you were taught the answers to is not
+  # a result. This ablation varies WHAT THE TARGET IS and scores every run against the
+  # one non-CALIMA reference that exists (the 278 human wazan patterns).
+  #
+  # WHAT ACTUALLY VARIES, HEAD BY HEAD — stated because "silver vs gold" is NOT one
+  # contrast, and reporting it as one would be false:
+  #   case : CLEAN contrast. PADT takes `Case=` from the treebank (human); Tashkeela
+  #          takes CALIMA `cas`. Same head, same masking rule, different source.
+  #   root : source differs (treebank `Root=` vs a gold-DERIVED dictionary) but the
+  #          dictionary is built from that same gold, so this is the weakest contrast.
+  #   wazan: NO contrast at all. Both corpora get CALIMA labels, because PADT has no
+  #          wazan column either. Any wazan difference here is CORPUS/domain, not source.
+  #   syn / ntp : gold-supervised on PADT, ABSENT on Tashkeela (masked). This is a
+  #          real supervision-density difference between the corpora and it is
+  #          REPORTED, not engineered away.
+  #   corpus: differs too, so all of the above is confounded with domain. A `--fit`
+  #          cannot separate them; only the human gold is common ground.
+  # ==========================================================================
+  sources: [gold, silver]
+  gold:   {train: data/out/padt-train.jsonl,      dev: data/out/padt-dev.jsonl}
+  silver: {train: data/out/tashkeela-train.jsonl, dev: data/out/tashkeela-dev.jsonl}
+  vocab: union_of_both      # ONE vocabulary for every run — see train.train() docstring
+  human_gold: data/annotation/gold-tashkeela-300.jsonl
+
+data:
+  max_len: 96                # context window in tokens
+  min_freq: 2                # vocab cutoff, word-level on form_bare
+  max_vocab: 20000
+  # where the input vocabulary comes from: the diacritic-stripped surface
+  input_field: form_bare
+  # 120,000 TOKENS PER SOURCE, and the number is the ablation's control, not a
+  # convenience: the silver-vs-gold comparison varies the TARGET SOURCE, so the token
+  # volume is held constant. PADT-train has 223,881 records and the silver train split
+  # was built with --limit 120000, so both sides see the same 120k tokens and the same
+  # ~39 batches per epoch. (Round 17's separate 3-seed run used the FULL 223,881; that
+  # run is about the arm difference, this one about the target source.)
+  #
+  # *** ROUND 26 DELIBERATELY BREAKS THAT CONTROL, IN ONE PLACE. *** The silver side is now
+  # the spread 2M-token build, so gold (120,000) and silver (1,871,205) no longer see the
+  # same volume -- BUT ONLY BECAUSE THE CALLER SAYS SO. This value applies to WHICHEVER
+  # source train() is handed, so on its own it would give BOTH arms 120,000 records and the
+  # larger silver sample would never be read: the run would repeat the previous result and
+  # the criteria would read it as evidence AGAINST the data-scale hypothesis. The grid cell
+  # therefore passes train_limit={'gold': limit, 'silver': None} (train.py, round 26). That
+  # per-call limit is the only thing that makes this paragraph true, and train() prints the
+  # effective volume for every run so a silent truncation cannot pass unnoticed.
+  # CONSEQUENCE, and it must travel with any number from this run: the
+  # gold-vs-silver VOLUME rows are no longer matched and must not be read as if they were.
+  # The ARM comparison (treatment vs baseline) inside each source is unaffected — both arms
+  # read this same file — and that is the claim under test (CHALLENGES 2ac).
+  # PADT cannot be raised to match: 223,881 records is the whole train split.
+  limit_train: 120000
+  limit_dev: 4000
+
+model:
+  d_model: 256
+  n_layers: 4
+  n_heads: 8
+  d_ff: 1024
+  dropout: 0.1
+  tie_embeddings: false
+  # v12: character-level CNN encoder for OOV handling (CHALLENGES 2z)
+  use_char_encoder: true
+  # v12 Phase 2: SOFT wazān -> root conditioning (CHALLENGES 2ab).
+  # Conditioned on the DENSE pre-classifier bottleneck — never a discrete argmax and never
+  # teacher-forced, because the wazān head errs on ~45% of in-domain tokens and a hard
+  # template would inject a false structural prior on each miss. Present in BOTH arms, so
+  # the arm parameter delta is unchanged by construction (parity is asserted, not assumed).
+  #
+  # *** ROUND 26: ON. *** v14 (ON) and v15 (OFF) settled the conditioning question — turning
+  # it OFF moved no root cell (CHALLENGES 2ac) and cost the treatment its wazān head
+  # (-4.2 pp, SEPARATED) — so the conditioning stays ON for the data-scale run. The parity
+  # fingerprint identifies THIS architecture in the kernel log; it is NOT comparable to
+  # v14's 13,087,021/13,087,117 or v15's 13,436,845/13,436,941, because the spread sample
+  # changed the vocabulary. Round 26 prints 17,041,455 / 17,041,457.
+  use_soft_wazan_conditioning: true
+  wazan_bottleneck: 128
+  causal: false
+  # THE PARITY KNOB. The baseline spends parameters on a |V| x d surface LM head
+  # (11,815 x 256 = 3.03M here); the treatment has no LM head and spends its budget
+  # on the grammatical pathway instead. Fitted with `--fit-parity`.
+  #
+  # THREE PAIRS. The vocabulary is a property of the COMPARISON and it has changed twice:
+  #   PADT-only vocab (round 16, the v5 full-corpus run): baseline 13,490,865
+  #                                                       treatment 13,491,112 (h=5918)
+  #   UNION vocab     (round 17, this ablation, h=6583):  baseline 13,393,933
+  #                                                       treatment 13,394,029
+  #   UNION vocab, SPREAD SAMPLE (round 26, conditioning ON, h=10018):
+  #                                                       baseline 17,041,455
+  #                                                       treatment 17,041,457
+  # (Conditioning OFF at the same vocabulary prints 17,824,559 / 17,824,561 — the OFF
+  #  architecture is the LARGER one, as it was for v15 vs v14. Fit with the flag in the state
+  #  the run will actually use.)
+  # Round 26 moves the pair by +33% because the spread sample yields 20,000 surface entries
+  # (max_vocab now BINDS — it never did before) and 6,633 wazān labels, so the baseline's
+  # |V| x d LM head grows by ~1.75M and the treatment tower must widen 6,583 -> 10,018.
+  #
+  # FIT IT WITH `tools/fit_parity_union.py`, NOT `model_arms.py --fit-parity`. The CLI
+  # builds its sizes from `paths.train` (PADT) ALONE, while the run asserts on the UNION
+  # vocabulary (GOLD_TR + SILV_TR) — a different pair of arms. The two coincided closely
+  # enough to hide that while the vocabularies nearly matched; at 20,000 vs PADT-only they
+  # do not, and the CLI fit would leave a 9.89% gap.
+  #
+  # Each run's pair is printed and asserted before training, and the pair is a number in
+  # this file rather than a claim in prose. Re-fit whenever the vocabulary changes, because
+  # a vocabulary that drifts between the two arms voids the matched-size claim.
+  # THE PARITY KNOB ELIMINATED: Treatment is lean, towerless, and inductive.
+  # The arbitrary 10,018-wide hidden layer was an artifact of forcing artificial
+  # parameter parity with the baseline's surface lookup table.
+  # Now treatment is purely inductive with 0 dummy parameters.
+  treatment_tower_hidden: null
+  baseline_tower_hidden: null
+
+heads:
+  # identical for both arms — this IS the A13 requirement
+  root:
+    n_slots: 4               # 4 slots, per SPEC-REV6 §4 (quadriliterals)
+    weight: 1.0
+  wazan:
+    weight: 1.0
+    note: "silver slot-label inventory; the arramooz 72-class index is later work (M1c)"
+  wazan_canonical:
+    n_classes: 119           # 118 canonical CV-skeletons + <pad>
+    weight: 1.0
+  proclitic:
+    n_classes: 23            # 22 bare proclitic classes + <none>
+    weight: 1.0
+  enclitic:
+    n_classes: 16            # 15 bare enclitic classes + <none>
+    weight: 1.0
+  case:
+    n_classes: 3             # NOM/ACC/GEN; `u` and `na` are MASKED, never a class
+    weight: 1.0
+  definiteness:
+    n_classes: 4             # 0: DEF_AL, 1: INDEF_TANWIN, 2: CONSTRUCT_IDAFA, 3: INVARIABLE/OTHER
+    weight: 1.0
+  syntax:
+    weight: 1.0
+  ntp:
+    weight: 0.0
+  surface:                   # baseline-primary, treatment-absent
+    weight: 1.0
+
+loss:
+  # Per-head cross-entropies differ by orders of magnitude (a 4-slot radical CE vs
+  # a 3-way case CE). Explicit weighting and focal loss for structural heads.
+  normalise_by_log_vocab: false
+  ignore_index: -100         # masked positions contribute exactly zero
+  focal_gamma: 2.0
+  focal_heads:
+    - wazan
+    - wazan_canonical
+    - stem_tail
+  weights:
+    wazan: 4.0
+    wazan_canonical: 2.0
+    stem_tail: 2.5
+    root: 2.0
+    case: 1.5
+    syntax: 1.5
+    definiteness: 1.0
+    proclitic: 0.5
+    enclitic: 0.5
+    ntp: 0.0
+    surface: 1.0
+
+parity:
+  tolerance: 0.01            # arms must agree within 1% of total parameters
+  # The arms MUST be compared at the same (steps, data, seeds). Changing one
+  # without the other invalidates the comparison — that is the whole point.
+
+training:
+  batch_size: 64
+  steps: 12000
+  lr: 0.0003
+  weight_decay: 0.01
+  grad_clip: 1.0
+  warmup_steps: 500
+  eval_every: 1000
+  log_every: 100
+  device: auto               # auto -> cuda if available else cpu, and FAILS LOUDLY
+                             # rather than silently training on CPU (COLAB.md §6)
+  checkpoint_dir: data/out/ckpt
+  save_every: 500
+
+smoke:                       # used only by src/smoke_test.py — never for real runs
+  d_model: 32
+  n_layers: 1
+  n_heads: 2
+  d_ff: 64
+  max_len: 16
+  batch_size: 4
+  # 60, NOT 12. The invariant "the loss descends" needs enough steps to be DETECTABLE, and at
+  # 12 it was not: measured on this config, the 3-window mean moves +0.075 (i.e. UP, failing the
+  # check) at 12 steps and -0.481 at 60, because the first steps are lr-warmup noise on 200
+  # tokens. The check was therefore brittle rather than wrong, and it fired when the v12 Phase-2
+  # conditioning shifted the 12-step trajectory by ~0.07 — noise, not a regression (the same run
+  # reaches a LOWER minimum, 5.12 vs 5.37). Raise the steps, never lower the bar.
+  steps: 60
+  limit_train: 200
+  limit_dev: 40
+  eval_every: 20

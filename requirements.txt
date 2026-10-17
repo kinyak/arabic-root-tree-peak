@@ -1,0 +1,39 @@
+# Local (laptop, CPU-only) environment — the versions every measured number was produced with.
+#
+# Rebuild exactly:
+#     cd ~/arabic-root-tree
+#     uv venv --python 3.11 .venv
+#     uv pip install --python .venv/bin/python --torch-backend=cpu -r requirements.txt
+#     .venv/bin/camel_data -i morphology-db-msa-r13          # 40.5 MB, GPL v2
+#     .venv/bin/camel_data -i disambig-mle-calima-msa-r13    # 88.7 MB, GPL v2 — MANDATORY
+#
+# `--torch-backend=cpu` is NOT optional on this laptop: a default install drags in the
+# NVIDIA CUDA wheels (3.2 GB) + triton (894 MB) on a machine with no GPU — a 5.6 GB venv
+# instead of 1.2 GB. Run src/prune_uv_cuda_cache.py if you forget.
+#
+# NOTE: this venv is uv-managed and has NO pip, so `python -m pip freeze` prints nothing.
+# Get versions with importlib.metadata (see the snippet at the bottom of START-HERE.md).
+
+camel-tools==1.6.0
+arramooz-pysqlite==0.4.2
+
+# pulled in by camel-tools; pinned here because the numbers were measured against them
+torch==2.14.1+cpu
+transformers==5.19.0
+numpy==2.4.6
+pandas==3.0.6
+scikit-learn==1.9.1
+huggingface-hub==1.33.0
+emoji==2.16.0
+regex==2026.9.29
+tabulate==0.10.0
+typer==0.27.3
+tqdm==4.70.1
+requests==2.34.2
+
+# NOT installed locally, deliberately:
+#   datasets   — only needed to stream Tashkeela, which must happen in the cloud (401 MB)
+#   pyarrow    — same
+#   qutrub / AlKhalil Morpho Sys — candidate renderers (CHALLENGES.md R1f), not yet probed
+# On Colab/Kaggle, do NOT use --torch-backend=cpu: the cloud image ships a working CUDA
+# torch and overriding it silently trains on CPU. See COLAB.md §1 and §6.

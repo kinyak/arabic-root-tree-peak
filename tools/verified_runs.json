@@ -1,0 +1,109 @@
+{
+  "_comment": "Pinned verified runs: each entry maps a run identifier to the commit sha and code-bundle sha that produced it. The verify script checks against this registry (via --run-id), not the working tree, so past runs stay verified after future src/ edits. bundle_sha is the first 16 chars of the sha256 of the embedded payload, exactly as printed in the kernel log.",
+  "v11": {
+    "commit": "7999cf3",
+    "bundle_sha": "95a81983e9ee94ec",
+    "notebook": "notebooks/run-padt.ipynb",
+    "kernel_log": "dist/runs/v11/arabic-root-tree-padt-matched-size-run.log",
+    "verified_date": "2026-10-10",
+    "seeds": 3,
+    "notes": "R19i: the v11 matched-size grid — fresh code PROVEN, root win replicates, case crux does not move"
+  },
+  "v13": {
+    "commit": "ba0394e",
+    "bundle_sha": "4bc0737a2fd19f13",
+    "notebook": "notebooks/run-padt.ipynb",
+    "kernel_log": "dist/runs/v13/kernel_full.log",
+    "verified_date": "2026-10-10",
+    "seeds": 1,
+    "notes": "v12 character-level CNN input encoder. Code proven; char vocab present in-cloud (char=82); PARITY 13,436,845/13,436,941. n=1 seed — no verdict from this run is a test."
+  },
+  "v14": {
+    "commit": "829254b",
+    "bundle_sha": "12a4ca31e161d36e",
+    "notebook": "notebooks/run-padt.ipynb",
+    "kernel_log": "dist/runs/v14/kernel_full.log",
+    "verified_date": "2026-10-10",
+    "seeds": 3,
+    "architecture": "v12 char encoder + SOFT wazan->root conditioning (shared by both arms)",
+    "verified_parity": {
+      "baseline": 13087021,
+      "treatment": 13087117,
+      "gap": 7.335458222005656e-06
+    },
+    "activation_evidence": "the cloud printed 13,087,021 / 13,087,117 — the CONDITIONING architecture, not the 13,436,845 / 13,436,941 of v13 — so the shared soft wazan->root branch compiled in and ran. Post-hoc evidence, not an in-notebook test: this notebook predates the forward-pass activation assertion.",
+    "not_in_this_artifact": [
+      "forward-pass conditioning activation assertion",
+      "outputs/code_bundle_sha provenance",
+      "padt_dev_root_whole (argmax) in METRICS"
+    ],
+    "notes": "3-seed grid, 12 runs, 3,550 s. Treatment does NOT beat baseline on root anywhere once decoded with the trie; see CHALLENGES 2ab."
+  },
+  "v15": {
+    "commit": "aaf8317",
+    "bundle_sha": "588a30a41c76b96a",
+    "bundle_sha_source": "CONFIRMED against the fetched kernel log on 2026-10-11: verify_run_code.py --kernel-log dist/runs/v15/kernel_full.log --run-id v15 -> the run's code IS the pinned bundle",
+    "notebook": "notebooks/run-padt.ipynb",
+    "kernel_log": "dist/runs/v15/kernel_full.log",
+    "results": "dist/runs/v15/results/results.json",
+    "verified_date": "2026-10-11",
+    "verified_parity": {
+      "baseline": 13436845,
+      "treatment": 13436941,
+      "gap": 7.14448325701512e-06
+    },
+    "seeds": 3,
+    "architecture": "v12 char encoder, SOFT wazan->root conditioning OFF - the CONTROL arm",
+    "expected_parity": {
+      "baseline": 13436845,
+      "treatment": 13436941
+    },
+    "expected_parity_note": "the NO-conditioning counts, identical to v13. If the cloud prints 13,087,021 / 13,087,117 the flag did NOT take and the control is really another conditioning run.",
+    "carries_audit_fixes": [
+      "forward-pass conditioning activation probe",
+      "code_bundle_sha + config_sha256 + seeds + parity.tolerance/exact_match in results.json",
+      "padt_dev_root_whole (argmax) in METRICS"
+    ],
+    "notes": "VERIFIED 2026-10-11: the run's code IS the pinned bundle, and the parity printed was the NO-conditioning counts, so the flag really took. RESULT: turning the conditioning OFF moves NO root cell - every sign and every verdict identical, largest shift 0.0096, inside the seed spread - so v14's treatment root loss belongs to the shared encoder / 13k-type vocabulary / decoder, NOT to the conditioning. OFF also exposes a -4.2 pp wazan deficit vs baseline on the gold target (SEPARATED) that the conditioning had been masking. See CHALLENGES 2ac."
+  },
+  "v21": {
+    "commit": null,
+    "commit_note": "NO COMMIT — this run executed an UNCOMMITTED working tree. Registered anyway: a run that trained must be identifiable afterwards whether or not anyone committed its code.",
+    "bundle_sha": "cfd992765884bbb4",
+    "bundle_bytes": 465404,
+    "bundle_files": 81,
+    "committed_config_bundle_sha": "20335ce6434ff198",
+    "committed_config_bundle_bytes": 465297,
+    "objective_config_sha256": "75e725b8f0d50cb9",
+    "notebook": "notebooks/run-padt.ipynb",
+    "kernel_log": "dist/runs/v21/live_follow.log",
+    "verified_date": "2026-10-14",
+    "seeds": 12,
+    "status": "CANCELLED by the owner 2026-10-14 with 2 of 12 runs complete (~2,129 s each)",
+    "uncommitted_objective": {
+      "normalise_by_log_vocab": false,
+      "focal_gamma": 2.0,
+      "focal_heads": [
+        "case",
+        "stem_tail",
+        "wazan",
+        "wazan_canonical"
+      ],
+      "loss_weights": {
+        "wazan": 4.0,
+        "wazan_canonical": 2.0,
+        "stem_tail": 2.0,
+        "root": 1.5,
+        "case": 1.5,
+        "syntax": 1.5,
+        "surface": 1.0,
+        "ntp": 0.5,
+        "proclitic": 0.25,
+        "enclitic": 0.25,
+        "definiteness": 0.25
+      }
+    },
+    "why_cancelled": "TWO independent confounds: (a) the uncommitted loss rewrite above, and (b) the `stem_tail` head trained on gold targets where 16.7% of suffixed PADT tokens were mislabelled as 'bare stem' (EVIDENCE_LOG §2cs). Not re-runnable as it stands.",
+    "notes": "Adjudicated in §2cq/§2cs. The bundle sha matched the WORKING TREE byte-for-byte, which is how the uncommitted objective was caught. No verdict may be drawn from this run."
+  }
+}

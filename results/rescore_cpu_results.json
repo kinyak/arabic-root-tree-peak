@@ -1,0 +1,509 @@
+{
+  "note": "leak-free decoder; both resource modes; safe checkpoint load",
+  "results": [
+    {
+      "checkpoint": "silver-treatment-s20261009.pt",
+      "arm": "treatment",
+      "source": "silver",
+      "seed": 20261009,
+      "n_missing_tensors": 0,
+      "disabled_modules": [],
+      "untrained_heads": [],
+      "elapsed_sec": 8.88,
+      "modes": {
+        "resource_off": {
+          "wazan_raw": 0.4946,
+          "wazan_hamza_norm": 0.2581,
+          "wazan_canonical": 0.362,
+          "wazan_slots": 0.9964,
+          "root": 0.7634,
+          "case_macro_f1": 0.4903282141524023,
+          "surface_v3_stem": 0.13333333333333333,
+          "surface_v3_rasm_stem": 0.14333333333333334,
+          "surface_v3_rasm_token": 0.14333333333333334,
+          "v3_res_off_argmax": 0.13333333333333333,
+          "v3_res_off_joint": 0.14333333333333334,
+          "v3_res_on": 0.13333333333333333,
+          "v3_res_on_joint": null
+        },
+        "resource_on": {
+          "wazan_raw": 0.4946,
+          "wazan_hamza_norm": 0.2581,
+          "wazan_canonical": 0.362,
+          "wazan_slots": 0.9964,
+          "root": 0.7634,
+          "case_macro_f1": 0.4903282141524023,
+          "surface_v3_stem": 0.6633333333333333,
+          "surface_v3_rasm_stem": 0.67,
+          "surface_v3_rasm_token": 0.67,
+          "v3_res_off_argmax": 0.13333333333333333,
+          "v3_res_off_joint": null,
+          "v3_res_on": 0.6633333333333333,
+          "v3_res_on_joint": 0.67
+        }
+      }
+    },
+    {
+      "checkpoint": "silver-treatment-s20261010.pt",
+      "arm": "treatment",
+      "source": "silver",
+      "seed": 20261010,
+      "n_missing_tensors": 0,
+      "disabled_modules": [],
+      "untrained_heads": [],
+      "elapsed_sec": 6.83,
+      "modes": {
+        "resource_off": {
+          "wazan_raw": 0.4946,
+          "wazan_hamza_norm": 0.2545,
+          "wazan_canonical": 0.3656,
+          "wazan_slots": 0.9928,
+          "root": 0.7634,
+          "case_macro_f1": 0.4619470838215985,
+          "surface_v3_stem": 0.13,
+          "surface_v3_rasm_stem": 0.13666666666666666,
+          "surface_v3_rasm_token": 0.13666666666666666,
+          "v3_res_off_argmax": 0.13,
+          "v3_res_off_joint": 0.13666666666666666,
+          "v3_res_on": 0.13,
+          "v3_res_on_joint": null
+        },
+        "resource_on": {
+          "wazan_raw": 0.4946,
+          "wazan_hamza_norm": 0.2545,
+          "wazan_canonical": 0.3656,
+          "wazan_slots": 0.9928,
+          "root": 0.7634,
+          "case_macro_f1": 0.4619470838215985,
+          "surface_v3_stem": 0.66,
+          "surface_v3_rasm_stem": 0.6633333333333333,
+          "surface_v3_rasm_token": 0.6633333333333333,
+          "v3_res_off_argmax": 0.13,
+          "v3_res_off_joint": null,
+          "v3_res_on": 0.66,
+          "v3_res_on_joint": 0.6633333333333333
+        }
+      }
+    },
+    {
+      "checkpoint": "silver-treatment-s20261011.pt",
+      "arm": "treatment",
+      "source": "silver",
+      "seed": 20261011,
+      "n_missing_tensors": 0,
+      "disabled_modules": [],
+      "untrained_heads": [],
+      "elapsed_sec": 6.67,
+      "modes": {
+        "resource_off": {
+          "wazan_raw": 0.4839,
+          "wazan_hamza_norm": 0.2509,
+          "wazan_canonical": 0.3513,
+          "wazan_slots": 0.9964,
+          "root": 0.7419,
+          "case_macro_f1": 0.4725243597079676,
+          "surface_v3_stem": 0.11333333333333333,
+          "surface_v3_rasm_stem": 0.12,
+          "surface_v3_rasm_token": 0.12,
+          "v3_res_off_argmax": 0.11333333333333333,
+          "v3_res_off_joint": 0.12,
+          "v3_res_on": 0.11333333333333333,
+          "v3_res_on_joint": null
+        },
+        "resource_on": {
+          "wazan_raw": 0.4839,
+          "wazan_hamza_norm": 0.2509,
+          "wazan_canonical": 0.3513,
+          "wazan_slots": 0.9964,
+          "root": 0.7419,
+          "case_macro_f1": 0.4725243597079676,
+          "surface_v3_stem": 0.65,
+          "surface_v3_rasm_stem": 0.6533333333333333,
+          "surface_v3_rasm_token": 0.6533333333333333,
+          "v3_res_off_argmax": 0.11333333333333333,
+          "v3_res_off_joint": null,
+          "v3_res_on": 0.65,
+          "v3_res_on_joint": 0.6533333333333333
+        }
+      }
+    },
+    {
+      "checkpoint": "silver-baseline-s20261009.pt",
+      "arm": "baseline",
+      "source": "silver",
+      "seed": 20261009,
+      "n_missing_tensors": 0,
+      "disabled_modules": [],
+      "untrained_heads": [],
+      "elapsed_sec": 9.66,
+      "modes": {
+        "resource_off": {
+          "wazan_raw": 0.491,
+          "wazan_hamza_norm": 0.2545,
+          "wazan_canonical": 0.3584,
+          "wazan_slots": 0.9964,
+          "root": 0.6272,
+          "case_macro_f1": 0.4765432098765432,
+          "surface_v3_stem": 0.14,
+          "surface_v3_rasm_stem": 0.17333333333333334,
+          "surface_v3_rasm_token": 0.17333333333333334,
+          "v3_res_off_argmax": 0.14,
+          "v3_res_off_joint": 0.17333333333333334,
+          "v3_res_on": 0.14,
+          "v3_res_on_joint": null
+        },
+        "resource_on": {
+          "wazan_raw": 0.491,
+          "wazan_hamza_norm": 0.2545,
+          "wazan_canonical": 0.3584,
+          "wazan_slots": 0.9964,
+          "root": 0.6272,
+          "case_macro_f1": 0.4765432098765432,
+          "surface_v3_stem": 0.6766666666666666,
+          "surface_v3_rasm_stem": 0.68,
+          "surface_v3_rasm_token": 0.68,
+          "v3_res_off_argmax": 0.14,
+          "v3_res_off_joint": null,
+          "v3_res_on": 0.6766666666666666,
+          "v3_res_on_joint": 0.68
+        }
+      }
+    },
+    {
+      "checkpoint": "silver-baseline-s20261010.pt",
+      "arm": "baseline",
+      "source": "silver",
+      "seed": 20261010,
+      "n_missing_tensors": 0,
+      "disabled_modules": [],
+      "untrained_heads": [],
+      "elapsed_sec": 10.17,
+      "modes": {
+        "resource_off": {
+          "wazan_raw": 0.491,
+          "wazan_hamza_norm": 0.2509,
+          "wazan_canonical": 0.3584,
+          "wazan_slots": 0.9964,
+          "root": 0.6308,
+          "case_macro_f1": 0.4582877111240536,
+          "surface_v3_stem": 0.12,
+          "surface_v3_rasm_stem": 0.14,
+          "surface_v3_rasm_token": 0.14,
+          "v3_res_off_argmax": 0.12,
+          "v3_res_off_joint": 0.14,
+          "v3_res_on": 0.12,
+          "v3_res_on_joint": null
+        },
+        "resource_on": {
+          "wazan_raw": 0.491,
+          "wazan_hamza_norm": 0.2509,
+          "wazan_canonical": 0.3584,
+          "wazan_slots": 0.9964,
+          "root": 0.6308,
+          "case_macro_f1": 0.4582877111240536,
+          "surface_v3_stem": 0.6533333333333333,
+          "surface_v3_rasm_stem": 0.6533333333333333,
+          "surface_v3_rasm_token": 0.6533333333333333,
+          "v3_res_off_argmax": 0.12,
+          "v3_res_off_joint": null,
+          "v3_res_on": 0.6533333333333333,
+          "v3_res_on_joint": 0.6533333333333333
+        }
+      }
+    },
+    {
+      "checkpoint": "silver-baseline-s20261011.pt",
+      "arm": "baseline",
+      "source": "silver",
+      "seed": 20261011,
+      "n_missing_tensors": 0,
+      "disabled_modules": [],
+      "untrained_heads": [],
+      "elapsed_sec": 9.92,
+      "modes": {
+        "resource_off": {
+          "wazan_raw": 0.5018,
+          "wazan_hamza_norm": 0.2616,
+          "wazan_canonical": 0.362,
+          "wazan_slots": 0.9964,
+          "root": 0.638,
+          "case_macro_f1": 0.49697404045230137,
+          "surface_v3_stem": 0.14,
+          "surface_v3_rasm_stem": 0.15333333333333332,
+          "surface_v3_rasm_token": 0.15333333333333332,
+          "v3_res_off_argmax": 0.14,
+          "v3_res_off_joint": 0.15333333333333332,
+          "v3_res_on": 0.14,
+          "v3_res_on_joint": null
+        },
+        "resource_on": {
+          "wazan_raw": 0.5018,
+          "wazan_hamza_norm": 0.2616,
+          "wazan_canonical": 0.362,
+          "wazan_slots": 0.9964,
+          "root": 0.638,
+          "case_macro_f1": 0.49697404045230137,
+          "surface_v3_stem": 0.66,
+          "surface_v3_rasm_stem": 0.66,
+          "surface_v3_rasm_token": 0.66,
+          "v3_res_off_argmax": 0.14,
+          "v3_res_off_joint": null,
+          "v3_res_on": 0.66,
+          "v3_res_on_joint": 0.66
+        }
+      }
+    },
+    {
+      "checkpoint": "gold-treatment-s20261009.pt",
+      "arm": "treatment",
+      "source": "gold",
+      "seed": 20261009,
+      "n_missing_tensors": 0,
+      "disabled_modules": [],
+      "untrained_heads": [],
+      "elapsed_sec": 7.22,
+      "modes": {
+        "resource_off": {
+          "wazan_raw": 0.3118,
+          "wazan_hamza_norm": 0.1577,
+          "wazan_canonical": 0.2258,
+          "wazan_slots": 0.9462,
+          "root": 0.4373,
+          "case_macro_f1": 0.5640242319546512,
+          "surface_v3_stem": 0.08333333333333333,
+          "surface_v3_rasm_stem": 0.11,
+          "surface_v3_rasm_token": 0.11,
+          "v3_res_off_argmax": 0.08333333333333333,
+          "v3_res_off_joint": 0.11,
+          "v3_res_on": 0.08333333333333333,
+          "v3_res_on_joint": null
+        },
+        "resource_on": {
+          "wazan_raw": 0.3118,
+          "wazan_hamza_norm": 0.1577,
+          "wazan_canonical": 0.2258,
+          "wazan_slots": 0.9462,
+          "root": 0.4373,
+          "case_macro_f1": 0.5640242319546512,
+          "surface_v3_stem": 0.7266666666666667,
+          "surface_v3_rasm_stem": 0.7266666666666667,
+          "surface_v3_rasm_token": 0.7266666666666667,
+          "v3_res_off_argmax": 0.08333333333333333,
+          "v3_res_off_joint": null,
+          "v3_res_on": 0.7266666666666667,
+          "v3_res_on_joint": 0.7266666666666667
+        }
+      }
+    },
+    {
+      "checkpoint": "gold-treatment-s20261010.pt",
+      "arm": "treatment",
+      "source": "gold",
+      "seed": 20261010,
+      "n_missing_tensors": 0,
+      "disabled_modules": [],
+      "untrained_heads": [],
+      "elapsed_sec": 6.74,
+      "modes": {
+        "resource_off": {
+          "wazan_raw": 0.3477,
+          "wazan_hamza_norm": 0.1828,
+          "wazan_canonical": 0.2473,
+          "wazan_slots": 0.9749,
+          "root": 0.509,
+          "case_macro_f1": 0.5527798075752041,
+          "surface_v3_stem": 0.11333333333333333,
+          "surface_v3_rasm_stem": 0.13,
+          "surface_v3_rasm_token": 0.13,
+          "v3_res_off_argmax": 0.11333333333333333,
+          "v3_res_off_joint": 0.13,
+          "v3_res_on": 0.11333333333333333,
+          "v3_res_on_joint": null
+        },
+        "resource_on": {
+          "wazan_raw": 0.3477,
+          "wazan_hamza_norm": 0.1828,
+          "wazan_canonical": 0.2473,
+          "wazan_slots": 0.9749,
+          "root": 0.509,
+          "case_macro_f1": 0.5527798075752041,
+          "surface_v3_stem": 0.72,
+          "surface_v3_rasm_stem": 0.72,
+          "surface_v3_rasm_token": 0.72,
+          "v3_res_off_argmax": 0.11333333333333333,
+          "v3_res_off_joint": null,
+          "v3_res_on": 0.72,
+          "v3_res_on_joint": 0.72
+        }
+      }
+    },
+    {
+      "checkpoint": "gold-treatment-s20261011.pt",
+      "arm": "treatment",
+      "source": "gold",
+      "seed": 20261011,
+      "n_missing_tensors": 0,
+      "disabled_modules": [],
+      "untrained_heads": [],
+      "elapsed_sec": 6.51,
+      "modes": {
+        "resource_off": {
+          "wazan_raw": 0.2975,
+          "wazan_hamza_norm": 0.1577,
+          "wazan_canonical": 0.2186,
+          "wazan_slots": 0.9713,
+          "root": 0.5161,
+          "case_macro_f1": 0.6020137135968052,
+          "surface_v3_stem": 0.10666666666666667,
+          "surface_v3_rasm_stem": 0.12666666666666668,
+          "surface_v3_rasm_token": 0.12666666666666668,
+          "v3_res_off_argmax": 0.10666666666666667,
+          "v3_res_off_joint": 0.12666666666666668,
+          "v3_res_on": 0.10666666666666667,
+          "v3_res_on_joint": null
+        },
+        "resource_on": {
+          "wazan_raw": 0.2975,
+          "wazan_hamza_norm": 0.1577,
+          "wazan_canonical": 0.2186,
+          "wazan_slots": 0.9713,
+          "root": 0.5161,
+          "case_macro_f1": 0.6020137135968052,
+          "surface_v3_stem": 0.7,
+          "surface_v3_rasm_stem": 0.7,
+          "surface_v3_rasm_token": 0.7,
+          "v3_res_off_argmax": 0.10666666666666667,
+          "v3_res_off_joint": null,
+          "v3_res_on": 0.7,
+          "v3_res_on_joint": 0.7
+        }
+      }
+    },
+    {
+      "checkpoint": "gold-baseline-s20261009.pt",
+      "arm": "baseline",
+      "source": "gold",
+      "seed": 20261009,
+      "n_missing_tensors": 0,
+      "disabled_modules": [],
+      "untrained_heads": [],
+      "elapsed_sec": 9.51,
+      "modes": {
+        "resource_off": {
+          "wazan_raw": 0.3118,
+          "wazan_hamza_norm": 0.1756,
+          "wazan_canonical": 0.2258,
+          "wazan_slots": 0.9713,
+          "root": 0.405,
+          "case_macro_f1": 0.5605784355784356,
+          "surface_v3_stem": 0.08333333333333333,
+          "surface_v3_rasm_stem": 0.09333333333333334,
+          "surface_v3_rasm_token": 0.09333333333333334,
+          "v3_res_off_argmax": 0.08333333333333333,
+          "v3_res_off_joint": 0.09333333333333334,
+          "v3_res_on": 0.08333333333333333,
+          "v3_res_on_joint": null
+        },
+        "resource_on": {
+          "wazan_raw": 0.3118,
+          "wazan_hamza_norm": 0.1756,
+          "wazan_canonical": 0.2258,
+          "wazan_slots": 0.9713,
+          "root": 0.405,
+          "case_macro_f1": 0.5605784355784356,
+          "surface_v3_stem": 0.7,
+          "surface_v3_rasm_stem": 0.6966666666666667,
+          "surface_v3_rasm_token": 0.6966666666666667,
+          "v3_res_off_argmax": 0.08333333333333333,
+          "v3_res_off_joint": null,
+          "v3_res_on": 0.7,
+          "v3_res_on_joint": 0.6966666666666667
+        }
+      }
+    },
+    {
+      "checkpoint": "gold-baseline-s20261010.pt",
+      "arm": "baseline",
+      "source": "gold",
+      "seed": 20261010,
+      "n_missing_tensors": 0,
+      "disabled_modules": [],
+      "untrained_heads": [],
+      "elapsed_sec": 9.93,
+      "modes": {
+        "resource_off": {
+          "wazan_raw": 0.3441,
+          "wazan_hamza_norm": 0.1792,
+          "wazan_canonical": 0.2509,
+          "wazan_slots": 0.9785,
+          "root": 0.3835,
+          "case_macro_f1": 0.5134713187463039,
+          "surface_v3_stem": 0.08666666666666667,
+          "surface_v3_rasm_stem": 0.10333333333333333,
+          "surface_v3_rasm_token": 0.10333333333333333,
+          "v3_res_off_argmax": 0.08666666666666667,
+          "v3_res_off_joint": 0.10333333333333333,
+          "v3_res_on": 0.08666666666666667,
+          "v3_res_on_joint": null
+        },
+        "resource_on": {
+          "wazan_raw": 0.3441,
+          "wazan_hamza_norm": 0.1792,
+          "wazan_canonical": 0.2509,
+          "wazan_slots": 0.9785,
+          "root": 0.3835,
+          "case_macro_f1": 0.5134713187463039,
+          "surface_v3_stem": 0.6766666666666666,
+          "surface_v3_rasm_stem": 0.68,
+          "surface_v3_rasm_token": 0.68,
+          "v3_res_off_argmax": 0.08666666666666667,
+          "v3_res_off_joint": null,
+          "v3_res_on": 0.6766666666666666,
+          "v3_res_on_joint": 0.68
+        }
+      }
+    },
+    {
+      "checkpoint": "gold-baseline-s20261011.pt",
+      "arm": "baseline",
+      "source": "gold",
+      "seed": 20261011,
+      "n_missing_tensors": 0,
+      "disabled_modules": [],
+      "untrained_heads": [],
+      "elapsed_sec": 10.42,
+      "modes": {
+        "resource_off": {
+          "wazan_raw": 0.319,
+          "wazan_hamza_norm": 0.19,
+          "wazan_canonical": 0.2473,
+          "wazan_slots": 0.9713,
+          "root": 0.3799,
+          "case_macro_f1": 0.48920377867746295,
+          "surface_v3_stem": 0.06333333333333334,
+          "surface_v3_rasm_stem": 0.09333333333333334,
+          "surface_v3_rasm_token": 0.09333333333333334,
+          "v3_res_off_argmax": 0.06333333333333334,
+          "v3_res_off_joint": 0.09333333333333334,
+          "v3_res_on": 0.06333333333333334,
+          "v3_res_on_joint": null
+        },
+        "resource_on": {
+          "wazan_raw": 0.319,
+          "wazan_hamza_norm": 0.19,
+          "wazan_canonical": 0.2473,
+          "wazan_slots": 0.9713,
+          "root": 0.3799,
+          "case_macro_f1": 0.48920377867746295,
+          "surface_v3_stem": 0.6866666666666666,
+          "surface_v3_rasm_stem": 0.69,
+          "surface_v3_rasm_token": 0.69,
+          "v3_res_off_argmax": 0.06333333333333334,
+          "v3_res_off_joint": null,
+          "v3_res_on": 0.6866666666666666,
+          "v3_res_on_joint": 0.69
+        }
+      }
+    }
+  ]
+}

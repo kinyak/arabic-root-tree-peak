@@ -1,0 +1,886 @@
+{
+ "map_train": {
+  "books": [
+   0,
+   10
+  ],
+  "surfaces": 152,
+  "matched_tokens": 58524,
+  "tier1_surfaces": 104,
+  "tier1_threshold": 0.95
+ },
+ "eval": [
+  {
+   "name": "HELD-OUT Tashkeela books 60..96 — FOLDED both sides: REGRESSION GUARD (must match the unfolded run)",
+   "scanned": 300000,
+   "matched": 67563,
+   "surfaces_seen": 141,
+   "not_in_train_map": 296,
+   "precision": 0.9099507126681764,
+   "unvocalised_share": 0.010745526397584478,
+   "vocalised_only": {
+    "tokens": 66817,
+    "precision": 0.9159944325545895,
+    "tier1_tokens": 41646,
+    "tier1_precision": 0.9975027613696393
+   },
+   "tier1": {
+    "surfaces": 86,
+    "tokens": 42012,
+    "precision": 0.9953584690088546,
+    "share_of_running_text": 0.14004
+   },
+   "tier2": {
+    "surfaces": 45,
+    "tokens": 25255,
+    "precision": 0.7785389031874876,
+    "share_of_running_text": 0.08418333333333333
+   },
+   "sweep": [
+    {
+     "threshold": 0.999,
+     "surfaces": 74,
+     "tokens": 31064,
+     "share_of_running_text": 0.10354666666666666,
+     "precision": 0.9965554983260365
+    },
+    {
+     "threshold": 0.99,
+     "surfaces": 78,
+     "tokens": 37232,
+     "share_of_running_text": 0.12410666666666667,
+     "precision": 0.9965889557370005
+    },
+    {
+     "threshold": 0.98,
+     "surfaces": 80,
+     "tokens": 39721,
+     "share_of_running_text": 0.13240333333333335,
+     "precision": 0.9960222552302309
+    },
+    {
+     "threshold": 0.95,
+     "surfaces": 86,
+     "tokens": 42012,
+     "share_of_running_text": 0.14004,
+     "precision": 0.9953584690088546
+    },
+    {
+     "threshold": 0.9,
+     "surfaces": 93,
+     "tokens": 47780,
+     "share_of_running_text": 0.15926666666666667,
+     "precision": 0.9944118878191712
+    },
+    {
+     "threshold": 0.8,
+     "surfaces": 101,
+     "tokens": 55927,
+     "share_of_running_text": 0.18642333333333333,
+     "precision": 0.9782931321186547
+    },
+    {
+     "threshold": 0.0,
+     "surfaces": 131,
+     "tokens": 67267,
+     "share_of_running_text": 0.22422333333333333,
+     "precision": 0.9139548366955565
+    }
+   ],
+   "worst_surfaces": {
+    "ان": {
+     "أَنَّ": 2607,
+     "أَنْ": 1481,
+     "إنْ": 645,
+     "إنَّ": 340,
+     "آنٍ": 1
+    },
+    "غير": {
+     "غَيْرِ": 505,
+     "غَيْرُ": 434,
+     "غَيْرَ": 285,
+     "غَيَّرَ": 6,
+     "غير": 2,
+     "غُيِّرَ": 2
+    },
+    "من": {
+     "مِنْ": 5709,
+     "مَنْ": 685,
+     "مَنَّ": 6
+    },
+    "لما": {
+     "لِمَا": 307,
+     "لَمَّا": 213,
+     "لَمَا": 32
+    },
+    "بعد": {
+     "بَعْدَ": 603,
+     "بَعْدُ": 178,
+     "بَعُدَ": 14,
+     "بَعْدِ": 4,
+     "بُعْدٌ": 3,
+     "بُعْدٍ": 2
+    },
+    "اما": {
+     "إمَّا": 163,
+     "أَمَّا": 142
+    },
+    "لكن": {
+     "لَكِنْ": 122,
+     "لَكِنَّ": 39
+    },
+    "مثل": {
+     "مِثْلُ": 77,
+     "مِثْلَ": 51,
+     "مِثْلِ": 46,
+     "مَثَّلَ": 1
+    },
+    "و": {
+     "و": 82,
+     "وَ": 27
+    },
+    "عوض": {
+     "عِوَضٍ": 55,
+     "عِوَضِ": 10,
+     "عِوَضٌ": 8,
+     "عِوَضَ": 7,
+     "عِوَضُ": 2,
+     "عَوَّضَ": 1
+    }
+   }
+  },
+  {
+   "name": "QAC 0.4 FORM (Qur'anic, FULLY VOCALISED — the right Qur'anic gold)",
+   "scanned": 300000,
+   "matched": 65158,
+   "surfaces_seen": 102,
+   "not_in_train_map": 8074,
+   "precision": 0.43250253230608676,
+   "unvocalised_share": 0.0604223579606495,
+   "vocalised_only": {
+    "tokens": 53736,
+    "precision": 0.5187025457793658,
+    "tier1_tokens": 27566,
+    "tier1_precision": 0.5914532394979323
+   },
+   "tier1": {
+    "surfaces": 60,
+    "tokens": 27874,
+    "precision": 0.5959675683432589,
+    "share_of_running_text": 0.09291333333333333
+   },
+   "tier2": {
+    "surfaces": 34,
+    "tokens": 29210,
+    "precision": 0.3960629921259842,
+    "share_of_running_text": 0.09736666666666667
+   },
+   "sweep": [
+    {
+     "threshold": 0.999,
+     "surfaces": 50,
+     "tokens": 21245,
+     "share_of_running_text": 0.07081666666666667,
+     "precision": 0.6254648152506472
+    },
+    {
+     "threshold": 0.99,
+     "surfaces": 54,
+     "tokens": 22675,
+     "share_of_running_text": 0.07558333333333334,
+     "precision": 0.6293274531422272
+    },
+    {
+     "threshold": 0.98,
+     "surfaces": 55,
+     "tokens": 23025,
+     "share_of_running_text": 0.07675,
+     "precision": 0.6316178067318132
+    },
+    {
+     "threshold": 0.95,
+     "surfaces": 60,
+     "tokens": 27874,
+     "share_of_running_text": 0.09291333333333333,
+     "precision": 0.5959675683432589
+    },
+    {
+     "threshold": 0.9,
+     "surfaces": 65,
+     "tokens": 29544,
+     "share_of_running_text": 0.09848,
+     "precision": 0.5751083130246412
+    },
+    {
+     "threshold": 0.8,
+     "surfaces": 70,
+     "tokens": 34208,
+     "share_of_running_text": 0.11402666666666667,
+     "precision": 0.5149672591206735
+    },
+    {
+     "threshold": 0.0,
+     "surfaces": 94,
+     "tokens": 57084,
+     "share_of_running_text": 0.19028,
+     "precision": 0.49367598626585385
+    }
+   ],
+   "worst_surfaces": {
+    "ال": {
+     "الْ": 5375,
+     "ال": 2597,
+     "الَّ": 73,
+     "أَلَ": 1,
+     "الِ": 1
+    },
+    "من": {
+     "مِن": 850,
+     "مِنْ": 546,
+     "مَن": 535,
+     "مِنَ": 480,
+     "مِّن": 410,
+     "مِّنَ": 281
+    },
+    "ان": {
+     "إِنَّ": 1513,
+     "أَن": 488,
+     "إِن": 468,
+     "أَنَّ": 343,
+     "إِنِّ": 151,
+     "إِنْ": 134
+    },
+    "كم": {
+     "كُمْ": 1610,
+     "كُم": 444,
+     "كُمُ": 208,
+     "كَمْ": 18,
+     "كَم": 3,
+     "كُّمُ": 1
+    },
+    "هم": {
+     "هُمْ": 2039,
+     "هِمْ": 773,
+     "هُم": 537,
+     "هُمُ": 331,
+     "هِم": 146,
+     "هِمُ": 71
+    },
+    "ه": {
+     "هُ": 675,
+     "هِ": 544,
+     "هَٰ": 4,
+     "هْ": 4,
+     "هَ": 2,
+     "هُّ": 1
+    },
+    "في": {
+     "فِى": 1158,
+     "فِي": 449,
+     "فِّى": 1
+    },
+    "علي": {
+     "عَلَيْ": 714,
+     "عَلَىٰ": 362,
+     "عَلَى": 266,
+     "عَلَىَّ": 16,
+     "عَلِىُّ": 5,
+     "عَٰلِيَ": 3
+    }
+   }
+  },
+  {
+   "name": "EQTB uthmani RAW (control)",
+   "scanned": 300000,
+   "matched": 68045,
+   "surfaces_seen": 106,
+   "not_in_train_map": 8463,
+   "precision": 0.18667058564185465,
+   "unvocalised_share": 0.45722683518259977,
+   "vocalised_only": {
+    "tokens": 34021,
+    "precision": 0.36104170953234765,
+    "tier1_tokens": 18222,
+    "tier1_precision": 0.41411480627812536
+   },
+   "tier1": {
+    "surfaces": 63,
+    "tokens": 30069,
+    "precision": 0.26489075127207423,
+    "share_of_running_text": 0.10023
+   },
+   "tier2": {
+    "surfaces": 35,
+    "tokens": 29513,
+    "precision": 0.16050553993155559,
+    "share_of_running_text": 0.09837666666666667
+   },
+   "sweep": [
+    {
+     "threshold": 0.999,
+     "surfaces": 52,
+     "tokens": 23373,
+     "share_of_running_text": 0.07791,
+     "precision": 0.23073631968510674
+    },
+    {
+     "threshold": 0.99,
+     "surfaces": 56,
+     "tokens": 24833,
+     "share_of_running_text": 0.08277666666666667,
+     "precision": 0.23360045101276528
+    },
+    {
+     "threshold": 0.98,
+     "surfaces": 57,
+     "tokens": 25183,
+     "share_of_running_text": 0.08394333333333333,
+     "precision": 0.2346027081761506
+    },
+    {
+     "threshold": 0.95,
+     "surfaces": 63,
+     "tokens": 30069,
+     "share_of_running_text": 0.10023,
+     "precision": 0.26489075127207423
+    },
+    {
+     "threshold": 0.9,
+     "surfaces": 68,
+     "tokens": 31793,
+     "share_of_running_text": 0.10597666666666666,
+     "precision": 0.25565376026169284
+    },
+    {
+     "threshold": 0.8,
+     "surfaces": 74,
+     "tokens": 36636,
+     "share_of_running_text": 0.12212,
+     "precision": 0.22830003275466754
+    },
+    {
+     "threshold": 0.0,
+     "surfaces": 98,
+     "tokens": 59582,
+     "share_of_running_text": 0.19860666666666665,
+     "precision": 0.21318519015810145
+    }
+   ],
+   "worst_surfaces": {
+    "ال": {
+     "الْ": 3209,
+     "ٱلْ": 2168,
+     "ال": 1614,
+     "ٱل": 1032,
+     "ٱلَّ": 25,
+     "أل": 1
+    },
+    "و": {
+     "و": 6056,
+     "وَ": 3969,
+     "وْ": 37,
+     "وَّ": 14
+    },
+    "من": {
+     "من": 1786,
+     "منْ": 624,
+     "مِن": 289,
+     "مَن": 235,
+     "مِنْ": 203,
+     "مِنَ": 194
+    },
+    "ان": {
+     "إن": 1340,
+     "إِنَّ": 533,
+     "أن": 494,
+     "إِن": 223,
+     "أَن": 219,
+     "أَنَّ": 143
+    },
+    "ه": {
+     "هُ": 1445,
+     "ه": 943,
+     "هِ": 175,
+     "هْ": 4,
+     "هَٰ": 3,
+     "هَ": 1
+    },
+    "كم": {
+     "كُمْ": 1610,
+     "كُم": 444,
+     "كُمُ": 208,
+     "كمْ": 15,
+     "كَمْ": 3,
+     "كَم": 2
+    },
+    "هم": {
+     "هُمْ": 2039,
+     "هُم": 537,
+     "همْ": 445,
+     "هُمُ": 331,
+     "هِمْ": 328,
+     "هم": 90
+    },
+    "ف": {
+     "ف": 1780,
+     "فَ": 1221
+    },
+    "ما": {
+     "ما": 1495,
+     "مَا": 726,
+     "مَّا": 138
+    }
+   }
+  },
+  {
+   "name": "EQTB uthmani FOLDED (normalize_uthmani layer, both sides)",
+   "scanned": 300000,
+   "matched": 68247,
+   "surfaces_seen": 106,
+   "not_in_train_map": 8600,
+   "precision": 0.20774539540199569,
+   "unvocalised_share": 0.45644497194015854,
+   "vocalised_only": {
+    "tokens": 34049,
+    "precision": 0.3763399806161708,
+    "tier1_tokens": 18271,
+    "tier1_precision": 0.44124568989108426
+   },
+   "tier1": {
+    "surfaces": 64,
+    "tokens": 30152,
+    "precision": 0.31261607853542056,
+    "share_of_running_text": 0.10050666666666666
+   },
+   "tier2": {
+    "surfaces": 34,
+    "tokens": 29495,
+    "precision": 0.1611120528903204,
+    "share_of_running_text": 0.09831666666666666
+   },
+   "sweep": [
+    {
+     "threshold": 0.999,
+     "surfaces": 53,
+     "tokens": 23523,
+     "share_of_running_text": 0.07841,
+     "precision": 0.29137439952387023
+    },
+    {
+     "threshold": 0.99,
+     "surfaces": 57,
+     "tokens": 24997,
+     "share_of_running_text": 0.08332333333333333,
+     "precision": 0.290514861783414
+    },
+    {
+     "threshold": 0.98,
+     "surfaces": 58,
+     "tokens": 25347,
+     "share_of_running_text": 0.08449,
+     "precision": 0.29072474060046555
+    },
+    {
+     "threshold": 0.95,
+     "surfaces": 64,
+     "tokens": 30152,
+     "share_of_running_text": 0.10050666666666666,
+     "precision": 0.31261607853542056
+    },
+    {
+     "threshold": 0.9,
+     "surfaces": 69,
+     "tokens": 31733,
+     "share_of_running_text": 0.10577666666666667,
+     "precision": 0.3021775438817635
+    },
+    {
+     "threshold": 0.8,
+     "surfaces": 75,
+     "tokens": 36720,
+     "share_of_running_text": 0.1224,
+     "precision": 0.2675653594771242
+    },
+    {
+     "threshold": 0.0,
+     "surfaces": 98,
+     "tokens": 59647,
+     "share_of_running_text": 0.19882333333333332,
+     "precision": 0.2376984592686975
+    }
+   ],
+   "worst_surfaces": {
+    "ال": {
+     "الْ": 5377,
+     "ال": 2647,
+     "الَّ": 25,
+     "آل": 2,
+     "أل": 1
+    },
+    "و": {
+     "و": 6056,
+     "وَ": 3969,
+     "وْ": 37,
+     "وَّ": 14
+    },
+    "من": {
+     "من": 1786,
+     "منْ": 624,
+     "مِن": 349,
+     "مَن": 239,
+     "مِنْ": 203,
+     "مِنَ": 194
+    },
+    "ان": {
+     "إن": 1340,
+     "إِنَّ": 533,
+     "أن": 494,
+     "إِن": 223,
+     "أَن": 219,
+     "أَنَّ": 143
+    },
+    "كم": {
+     "كُمْ": 1610,
+     "كُم": 444,
+     "كُمُ": 208,
+     "كمْ": 15,
+     "كَمْ": 3,
+     "كَم": 2
+    },
+    "هم": {
+     "هُمْ": 2039,
+     "هُم": 537,
+     "همْ": 445,
+     "هُمُ": 331,
+     "هِمْ": 328,
+     "هم": 90
+    },
+    "ما": {
+     "ما": 1495,
+     "مَا": 726,
+     "مَآ": 165,
+     "مَّا": 138,
+     "مَّآ": 14
+    },
+    "ف": {
+     "ف": 1780,
+     "فَ": 1221
+    },
+    "ه": {
+     "هُ": 1445,
+     "ه": 943,
+     "هِ": 175,
+     "هْ": 4,
+     "هَ": 1
+    }
+   }
+  },
+  {
+   "name": "QAC 0.4 FORM (Qur'anic, FULLY VOCALISED — the right Qur'anic gold)",
+   "scanned": 300000,
+   "matched": 65158,
+   "surfaces_seen": 102,
+   "not_in_train_map": 8074,
+   "precision": 0.43250253230608676,
+   "unvocalised_share": 0.0604223579606495,
+   "vocalised_only": {
+    "tokens": 53736,
+    "precision": 0.5187025457793658,
+    "tier1_tokens": 27566,
+    "tier1_precision": 0.5914532394979323
+   },
+   "tier1": {
+    "surfaces": 60,
+    "tokens": 27874,
+    "precision": 0.5959675683432589,
+    "share_of_running_text": 0.09291333333333333
+   },
+   "tier2": {
+    "surfaces": 34,
+    "tokens": 29210,
+    "precision": 0.3960629921259842,
+    "share_of_running_text": 0.09736666666666667
+   },
+   "sweep": [
+    {
+     "threshold": 0.999,
+     "surfaces": 50,
+     "tokens": 21245,
+     "share_of_running_text": 0.07081666666666667,
+     "precision": 0.6254648152506472
+    },
+    {
+     "threshold": 0.99,
+     "surfaces": 54,
+     "tokens": 22675,
+     "share_of_running_text": 0.07558333333333334,
+     "precision": 0.6293274531422272
+    },
+    {
+     "threshold": 0.98,
+     "surfaces": 55,
+     "tokens": 23025,
+     "share_of_running_text": 0.07675,
+     "precision": 0.6316178067318132
+    },
+    {
+     "threshold": 0.95,
+     "surfaces": 60,
+     "tokens": 27874,
+     "share_of_running_text": 0.09291333333333333,
+     "precision": 0.5959675683432589
+    },
+    {
+     "threshold": 0.9,
+     "surfaces": 65,
+     "tokens": 29544,
+     "share_of_running_text": 0.09848,
+     "precision": 0.5751083130246412
+    },
+    {
+     "threshold": 0.8,
+     "surfaces": 70,
+     "tokens": 34208,
+     "share_of_running_text": 0.11402666666666667,
+     "precision": 0.5149672591206735
+    },
+    {
+     "threshold": 0.0,
+     "surfaces": 94,
+     "tokens": 57084,
+     "share_of_running_text": 0.19028,
+     "precision": 0.49367598626585385
+    }
+   ],
+   "worst_surfaces": {
+    "ال": {
+     "الْ": 5375,
+     "ال": 2597,
+     "الَّ": 73,
+     "أَلَ": 1,
+     "الِ": 1
+    },
+    "من": {
+     "مِن": 850,
+     "مِنْ": 546,
+     "مَن": 535,
+     "مِنَ": 480,
+     "مِّن": 410,
+     "مِّنَ": 281
+    },
+    "ان": {
+     "إِنَّ": 1513,
+     "أَن": 488,
+     "إِن": 468,
+     "أَنَّ": 343,
+     "إِنِّ": 151,
+     "إِنْ": 134
+    },
+    "كم": {
+     "كُمْ": 1610,
+     "كُم": 444,
+     "كُمُ": 208,
+     "كَمْ": 18,
+     "كَم": 3,
+     "كُّمُ": 1
+    },
+    "هم": {
+     "هُمْ": 2039,
+     "هِمْ": 773,
+     "هُم": 537,
+     "هُمُ": 331,
+     "هِم": 146,
+     "هِمُ": 71
+    },
+    "ه": {
+     "هُ": 675,
+     "هِ": 544,
+     "هَٰ": 4,
+     "هْ": 4,
+     "هَ": 2,
+     "هُّ": 1
+    },
+    "في": {
+     "فِى": 1158,
+     "فِي": 449,
+     "فِّى": 1
+    },
+    "علي": {
+     "عَلَيْ": 714,
+     "عَلَىٰ": 362,
+     "عَلَى": 266,
+     "عَلَىَّ": 16,
+     "عَلِىُّ": 5,
+     "عَٰلِيَ": 3
+    }
+   }
+  },
+  {
+   "name": "QAC FORM — IN-REGISTER (map surahs 1-57, eval surahs 58-114)",
+   "scanned": 300000,
+   "matched": 6117,
+   "surfaces_seen": 85,
+   "not_in_train_map": 1,
+   "precision": 0.7510217426843224,
+   "unvocalised_share": 0.059996730423410166,
+   "vocalised_only": {
+    "tokens": 5749,
+    "precision": 0.7942250826230649,
+    "tier1_tokens": 2038,
+    "tier1_precision": 0.992639842983317
+   },
+   "tier1": {
+    "surfaces": 31,
+    "tokens": 2079,
+    "precision": 0.9730639730639731,
+    "share_of_running_text": 0.00693
+   },
+   "tier2": {
+    "surfaces": 53,
+    "tokens": 4037,
+    "precision": 0.6368590537527867,
+    "share_of_running_text": 0.013456666666666667
+   },
+   "sweep": [
+    {
+     "threshold": 0.999,
+     "surfaces": 22,
+     "tokens": 653,
+     "share_of_running_text": 0.0021766666666666666,
+     "precision": 0.9954058192955589
+    },
+    {
+     "threshold": 0.99,
+     "surfaces": 25,
+     "tokens": 1003,
+     "share_of_running_text": 0.003343333333333333,
+     "precision": 0.9950149551345963
+    },
+    {
+     "threshold": 0.98,
+     "surfaces": 26,
+     "tokens": 1043,
+     "share_of_running_text": 0.0034766666666666665,
+     "precision": 0.9952061361457335
+    },
+    {
+     "threshold": 0.95,
+     "surfaces": 31,
+     "tokens": 2079,
+     "share_of_running_text": 0.00693,
+     "precision": 0.9730639730639731
+    },
+    {
+     "threshold": 0.9,
+     "surfaces": 40,
+     "tokens": 2496,
+     "share_of_running_text": 0.00832,
+     "precision": 0.9643429487179487
+    },
+    {
+     "threshold": 0.8,
+     "surfaces": 47,
+     "tokens": 2861,
+     "share_of_running_text": 0.009536666666666667,
+     "precision": 0.9538622859140161
+    },
+    {
+     "threshold": 0.0,
+     "surfaces": 84,
+     "tokens": 6116,
+     "share_of_running_text": 0.020386666666666668,
+     "precision": 0.7511445389143231
+    }
+   ],
+   "worst_surfaces": {
+    "ال": {
+     "الْ": 586,
+     "ال": 254,
+     "الَّ": 13
+    },
+    "من": {
+     "مِن": 74,
+     "مَن": 60,
+     "مِنْ": 37,
+     "مِّن": 28,
+     "مِنَ": 26,
+     "مَنْ": 22
+    },
+    "ل": {
+     "لَ": 183,
+     "لِ": 98,
+     "لْ": 48,
+     "لِّ": 46,
+     "لَّ": 20,
+     "ل": 8
+    },
+    "هم": {
+     "هُمْ": 174,
+     "هِمْ": 73,
+     "هُم": 37,
+     "هُمُ": 26,
+     "هِم": 14,
+     "هِمُ": 7
+    },
+    "ان": {
+     "إِنَّ": 170,
+     "أَن": 50,
+     "أَنَّ": 35,
+     "إِن": 30,
+     "إِنْ": 11,
+     "إِنِّ": 11
+    },
+    "علي": {
+     "عَلَيْ": 58,
+     "عَلَىٰ": 36,
+     "عَلَى": 22,
+     "عَٰلِيَ": 1
+    },
+    "و": {
+     "وَ": 908,
+     "و": 41,
+     "وْ": 6,
+     "وَّ": 1
+    },
+    "الي": {
+     "إِلَىٰ": 25,
+     "إِلَيْ": 21,
+     "إِلَى": 20,
+     "إِلَىَّ": 1
+    },
+    "ه": {
+     "هُ": 79,
+     "هِ": 40,
+     "هْ": 1,
+     "هَٰ": 1
+    },
+    "في": {
+     "فِى": 99,
+     "فِي": 39
+    },
+    "كم": {
+     "كُمْ": 143,
+     "كُم": 25,
+     "كُمُ": 13,
+     "كُّم": 1
+    },
+    "ا": {
+     "أَ": 52,
+     "ا": 36
+    }
+   }
+  }
+ ],
+ "human_gold": {
+  "present": true,
+  "rows": 300,
+  "closed_class_rows": 3,
+  "forms": [
+   "إمَامُ",
+   "رُبَّمَا",
+   "إنَّمَا"
+  ]
+ },
+ "token_cap": 300000,
+ "note": "map built from books 0..N; eval slice is DISJOINT. Held-out precision is the number to sign the policy off with, not the in-sample figure."
+}

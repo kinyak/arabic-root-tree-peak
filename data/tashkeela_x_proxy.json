@@ -1,0 +1,26 @@
+{
+ "what": "Tashkeela untemplatic-analysis proxy for the X share",
+ "caveat": "NOT the X tag; CAMeL untemplatic analysis. Upper-ish bound.",
+ "tokens": 30000,
+ "books": 10,
+ "classes": {
+  "templatic": 29160,
+  "backoff_pattern": 419,
+  "ntws_pattern": 421
+ },
+ "untemplatic": 840,
+ "untemplatic_share": 0.028,
+ "usable_root_share": 0.458,
+ "padt_x_same_basis": {
+  "train": {
+   "tokens": 223881,
+   "x": 13747,
+   "share": 0.06140315614098561
+  },
+  "test": {
+   "tokens": 28264,
+   "x": 1380,
+   "share": 0.04882536088310218
+  }
+ }
+}
