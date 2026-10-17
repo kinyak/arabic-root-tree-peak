@@ -1,5 +1,13 @@
 # arabic-root-tree
 
+> **This is the RESEARCH PEAK SNAPSHOT.** Read [`PEAK-README.md`](PEAK-README.md) first: it states the
+> frozen source commit, what the model measured at that point, and what is deliberately absent.
+> [`WHATS-EXCLUDED.md`](WHATS-EXCLUDED.md) lists every exclusion with its licence and size.
+>
+> This tree contains **no third-party corpora and no model weights**, by design. `python demo.py`
+> exercises the deterministic components (compiler, iʿlāl trace, mīzān, iʿrāb, Naḥw sandbox, semantic
+> binder) with no data and no dependencies beyond the standard library.
+
 A **Native Arabic Root-Tree Foundation Model** — a proposed architecture that plans Arabic generation at the
 level of the semantic root graph and morphological pattern (وزن) rather than surface letters, then renders
 fully-vocalized text with grammatical consistency.

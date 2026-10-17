@@ -43,3 +43,28 @@ The weights are the single most licence-sensitive artefact here: they are derive
 are GPL-2.0 (Tashkeela) and CC BY-NC-SA (PADT). That makes their redistribution a legal question, not
 a packaging one — which is why the production direction moved to a `camel_morph`-only (CC BY 4.0) data
 chain before anything is shipped.
+
+## Also removed, on a second pass (2026-10-17)
+
+A public-repository audit found material that would have shipped because it does not *look* like a
+corpus — it is plain `.json`:
+
+| Removed | Why |
+|---|---|
+| `data/weak_radical_dict.json` (614 KB) | every entry carries `"calima_root"` — derived from CALIMA, whose data is **not** covered by the MIT grant on `camel_tools` |
+| `data/closed_class_inventory.json` (1 MB) | header: `"built_from": "PADT train"` — PADT is CC BY-NC-SA 4.0 |
+| `data/abstention_homographs.json`, `data/closed_class_ambiguity.json`, `data/closed_class_bypass_heldout.json` | all `built_from: PADT train` |
+| `data/tashkeela_x_proxy.json` | Tashkeela-derived statistics |
+| `data/normalize_uthmani_audit.json` | EQTB (Uthmani Qur'anic text) statistics |
+| `.agents/`, `.vscode/` | personal agent rules and editor configuration — not research output |
+
+Some of these were only aggregate counts, which may not be copyrightable. They were removed anyway:
+a public repository should not require the reader to adjudicate that, and the counts are reproducible
+from the scripts in `tools/` with the corpora in place.
+
+## What a reader can and cannot run
+
+With no corpora present, these work: `python demo.py`, `tools/` measurement scripts that do not read a
+corpus, and the pure rule modules. These cannot: `src/smoke_test.py`, `src/train.py`,
+`src/eval_harness.py` — they open `data/out/padt-train.jsonl` by design.
+
